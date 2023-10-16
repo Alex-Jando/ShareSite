@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/common.css">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{url_for('views.index')}}">Home</a></li>
+                    <li><a href="{{url_for('views.files')}}">Files</a></li>
+                    <li><a href="{{url_for('views.links')}}">Links</a></li>
+                    <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{url_for('views.index')}}">Home</a></li>
+                    <li><a href="{{url_for('auth.login')}}">Login</a></li>
+                    <li><a href="{{url_for('auth.signup')}}">Signup</a></li>
+                {% endif %}
+            </ul>
+            <h2>Share Site</h2>
+        </nav>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash"><p class="flash-msg">{{ message }}</p><span class="close-flash" onclick="closeFlash(this);">&#10006;</span></div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+    <script>
+        function closeFlash(closeBtn) {
+            closeBtn.parentNode.remove();
+        }
+    </script>
+    {% block scripts %}{% endblock %}
+</html>

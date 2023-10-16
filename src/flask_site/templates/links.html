@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Links{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{url_for('static', filename='css/links.css')}}">{% endblock %}
+{% block content %}
+<form action="{{url_for('views.links')}}" method="POST">
+    <div class="form-field">
+        <label for="link">Enter a link to shorten</label>
+        <input type="text" name="link" id="link">
+    </div>
+    <span class="form-field">
+        <label for="public">Make Public:</label>
+        <input type="checkbox" name="public" id="public" value="True">
+    </span>
+    <button type="submit">Submit</button>
+</form>
+<div>
+    <h3>Links:</h3>
+    <ul>
+        {% for link in current_user.links %}
+            <li><a href="{{url_for('views.link', link_id=link.id)}}">{{url_for('views.link', link_id=link.id)}}</a>
+                <span>Public: {{link.public}}</span>
+                <a href="{{link.url}}">{{link.url}}</a>
+                <button><a href="{{url_for('views.delete_link', link_id=link.id)}}">Delete</a></button></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

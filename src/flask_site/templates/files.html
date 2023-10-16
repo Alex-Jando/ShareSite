@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}Files{% endblock %}
+{% block content %}
+<h3>Files:</h3>
+<ul>
+    {% for file in current_user.files %}
+        <li>{{ file.name }}
+            <span id="{{file.id}}-filesize">{{file.size}}</span>
+            <span>Public: {{file.public}}</span>
+            <button><a href="{{url_for('views.download', file_id=file.id)}}">Download</a></button>
+            <button><a href="{{url_for('views.delete_file', file_id=file.id)}}">Delete</a></button></li>
+    {% endfor %}
+</ul>
+<form action="{{ url_for('views.files') }}" method="POST" enctype="multipart/form-data">
+    <label for="file">Upload a file: </label>
+    <input type="file" name="file" id="file" multiple>
+    <label for="public">Is Public:</label>
+    <input type="checkbox" name="public" id="public" value="True">
+    <input type="submit" value="Upload">
+</form>
+{% endblock %}
+{% block scripts %}
+<script>
+    function formatBytes(bytes, decimals = 2) {
+        if (!+bytes) return '0 B'
+
+        const k = 1024
+        const dm = decimals < 0 ? 0 : decimals
+        const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+        const i = Math.floor(Math.log(bytes) / Math.log(k))
+
+        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+    }
+
+    document.querySelectorAll('span[id$="-filesize"]').forEach(fileSize => {
+        bytes = Number(fileSize.innerHTML)
+        fileSize.innerHTML = formatBytes(bytes)
+    })
+</script>
+{% endblock %}

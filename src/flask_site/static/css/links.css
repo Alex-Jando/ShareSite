@@ -1,0 +1,84 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+main form, main div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background-color: var(--DARK-BG);
+    color: var(--WHITE);
+    padding: 2rem;
+    width: 75%;
+    border-radius: 0.5rem;
+}
+
+main div ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+main div ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    gap: 1rem;
+    border: 1px solid var(--HIGHLIGHT);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    flex-wrap: wrap;
+}
+
+main div ul li a {
+    text-decoration: none;
+    color: var(--WHITE);
+}
+
+main div ul li button, main form button {
+    background-color: var(--WHITE);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+main div ul li button:hover, main form button:hover {
+    background-color: var(--HIGHLIGHT-ACCENT);
+}
+
+main div ul li button a {
+    text-decoration: none;
+    color: var(--BLACK);
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-field label {
+    font-size: 1.25rem;
+}
+
+.form-field input {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+
+.form-field input:focus {
+    outline: 2px solid #aaa;
+}
