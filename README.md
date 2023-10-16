@@ -6,5 +6,4 @@
 - Upload Files, and Links
 - Access Files, and Links
 - Manage Access to Files, and Links
-- Password Encrypt Files (Upcoming)
-- Password Encrypt Links (Upcoming)
+- Password Encrypt Files, and Links (Upcoming)
