@@ -1,0 +1,41 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+    height: 100%;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.options button {
+    background-color: var(--HIGHLIGHT-ACCENT);
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.options button:hover {
+    background-color: var(--HIGHLIGHT);
+}
+
+.options button a {
+    text-decoration: none;
+    color: black;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}

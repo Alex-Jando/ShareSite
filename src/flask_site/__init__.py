@@ -10,6 +10,7 @@ def create_app():
 
     app.config['SECRET_KEY'] = b'4mCVCzjpsTQr2eonNOZnWZMwBikTAAQDcg4S9_6GXqE'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+    # app.config['SERVER_NAME'] = ''
 
     db.init_app(app)
 

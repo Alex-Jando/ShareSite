@@ -1,8 +1,19 @@
 {% extends "layout.html" %}
 {% block title %}Home{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">{% endblock %}
 {% block content %}
-    <h1>Home</h1>
-    <p>Welcome to the home page!</p>
-    <p>Click <a href="{{url_for('views.files')}}">here</a> to see the files page.</p>
-    <p>Click <a href="{{url_for('views.links')}}">here</a> to see the links page.</p>
+    <div class="title">
+        <h1>ShareSite - Home</h1>
+        <small>All-in-one file, and link sharing.</small>
+    </div>
+    {% if current_user.is_authenticated %}
+        <div class="options">
+            <button><a href="/files">Files</a></button>
+            <button><a href="/links">Links</a></button>
+        </div>
+    {% else %}
+        <div class="options">
+            <button><a href="/signup">Get Started</a></button>
+        </div>
+    {% endif %}
 {% endblock %}
